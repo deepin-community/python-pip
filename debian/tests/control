@@ -1,0 +1,8 @@
+Tests: pip3-root.sh
+Restrictions: allow-stderr, breaks-testbed, needs-internet, needs-root
+
+Tests: pip3-user.sh
+Restrictions: allow-stderr, breaks-testbed, needs-internet
+
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=823358
+Tests: pip3-editable.sh
