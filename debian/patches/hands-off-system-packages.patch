@@ -5,6 +5,9 @@ Subject: Prevent pip from removing system packages.
 Adjust is_local() to consider OS-owned paths non-local.  Fix the error
 message for is_local() in the non-virtualenv case.
 
+This patch can probably be dropped now that we have PEP-668 support. But
+we'll keep it for now until we see how things play out with PEP-668.
+
 Author: Geoffrey Thomas <geofft@ldpreload.com>
 Bug-Debian: http://bugs.debian.org/771794
 Origin: https://github.com/geofft/pip.git
@@ -12,19 +15,17 @@ Forwarded: not-needed
 Reviewed-By: Donald Stufft <donald@stufft.io>
 Reviewed-By: Scott Kitterman <scott@kitterman.com>
 Last-Update: 2014-12-04
-
-Patch-Name: hands-off-system-packages.patch
 ---
- src/pip/_internal/utils/misc.py | 37 ++++++++++++++++++++++++++++---------
- 1 file changed, 28 insertions(+), 9 deletions(-)
+ src/pip/_internal/utils/misc.py | 34 +++++++++++++++++++++++++++++-----
+ 1 file changed, 29 insertions(+), 5 deletions(-)
 
 diff --git a/src/pip/_internal/utils/misc.py b/src/pip/_internal/utils/misc.py
-index 4fb64d2..459312f 100644
+index baa1ba7..cdf9b3a 100644
 --- a/src/pip/_internal/utils/misc.py
 +++ b/src/pip/_internal/utils/misc.py
-@@ -365,25 +365,44 @@ def renames(old, new):
- def is_local(path):
-     # type: (str) -> bool
+@@ -321,16 +321,40 @@ def renames(old: str, new: str) -> None:
+ 
+ def is_local(path: str) -> bool:
      """
 -    Return True if path is within sys.prefix, if we're running in a virtualenv.
 +    Return True if this is a path pip is allowed to modify.
@@ -54,9 +55,12 @@ index 4fb64d2..459312f 100644
 +    if running_under_virtualenv():
 +        return path.startswith(normalize_path(sys.prefix))
 +    else:
-+        from pip._internal.locations import distutils_scheme
++        from pip._internal.locations import get_scheme
++        from pip._internal.models.scheme import SCHEME_KEYS
 +        if path.startswith(prefix):
-+            for local_path in distutils_scheme("").values():
++            scheme = get_scheme("")
++            for key in SCHEME_KEYS:
++                local_path = getattr(scheme, key)
 +                if path.startswith(normalize_path(local_path)):
 +                    return True
 +            return False
@@ -64,15 +68,4 @@ index 4fb64d2..459312f 100644
 +            return True
  
  
- def dist_is_local(dist):
-     # type: (Distribution) -> bool
-     """
--    Return True if given Distribution object is installed locally
--    (i.e. within current virtualenv).
--
--    Always True if we're not in a virtualenv.
-+    Return True if given Distribution object is installed somewhere pip
-+    is allowed to modify.
- 
-     """
-     return is_local(dist_location(dist))
+ def write_output(msg: Any, *args: Any) -> None:

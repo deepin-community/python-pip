@@ -1,0 +1,69 @@
+From: Daniele Nicolodi <daniele@grinta.net>
+Date: Sat, 21 Jan 2023 13:10:23 +0100
+Subject: Reconcile computation of isolated build environment paths
+
+Use the same code to determine isolated environment paths at
+dependency install time and at environment setup time. We do not care
+about the exact paths but the paths needs to be consistent at package
+installation time and environment setup.
+
+This should fix all issues observed on platforms that customize the
+installation schemes, such as Debian and Homebrew, where dependency
+installation and isolated build environment setup resolved to
+different paths.
+
+See #11598 and #11623.
+
+Origin: https://github.com/pypa/pip/pull/11740/commits/d4c5409daa1d88a3fc33788655f5a7d8d111b29e
+Bug-Debian: https://bugs.debian.org/1019293
+---
+ src/pip/_internal/build_env.py | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/pip/_internal/build_env.py b/src/pip/_internal/build_env.py
+index 24bfa87..4f704a3 100644
+--- a/src/pip/_internal/build_env.py
++++ b/src/pip/_internal/build_env.py
+@@ -9,7 +9,7 @@ import sys
+ import textwrap
+ from collections import OrderedDict
+ from types import TracebackType
+-from typing import TYPE_CHECKING, Iterable, List, Optional, Set, Tuple, Type
++from typing import TYPE_CHECKING, Iterable, List, Optional, Set, Tuple, Type, Union
+ 
+ from pip._vendor.certifi import where
+ from pip._vendor.packaging.requirements import Requirement
+@@ -17,12 +17,7 @@ from pip._vendor.packaging.version import Version
+ 
+ from pip import __file__ as pip_location
+ from pip._internal.cli.spinners import open_spinner
+-from pip._internal.locations import (
+-    get_isolated_environment_bin_path,
+-    get_isolated_environment_lib_paths,
+-    get_platlib,
+-    get_purelib,
+-)
++from pip._internal.locations import get_platlib, get_purelib, get_scheme
+ from pip._internal.metadata import get_default_environment, get_environment
+ from pip._internal.utils.subprocess import call_subprocess
+ from pip._internal.utils.temp_dir import TempDirectory, tempdir_kinds
+@@ -33,12 +28,17 @@ if TYPE_CHECKING:
+ logger = logging.getLogger(__name__)
+ 
+ 
++def _dedup(a: str, b: str) -> Union[Tuple[str], Tuple[str, str]]:
++    return (a, b) if a != b else (a,)
++
++
+ class _Prefix:
+     def __init__(self, path: str) -> None:
+         self.path = path
+         self.setup = False
+-        self.bin_dir = get_isolated_environment_bin_path(path)
+-        self.lib_dirs = get_isolated_environment_lib_paths(path)
++        scheme = get_scheme("", prefix=path)
++        self.bin_dir = scheme.scripts
++        self.lib_dirs = _dedup(scheme.purelib, scheme.platlib)
+ 
+ 
+ def get_runnable_pip() -> str:

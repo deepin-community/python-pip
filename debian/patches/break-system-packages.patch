@@ -1,0 +1,98 @@
+From: Stefano Rivera <stefano@rivera.za.net>
+Date: Sun, 5 Feb 2023 11:47:38 -0400
+Subject: Implement --break-system-packages for EXTERNALLY-MANAGED
+ installations
+
+The PEP expected an override mechanism to ease the transition to PEP-668
+managed installs. This provides a command-line-driven override.
+
+Forwarded: https://github.com/pypa/pip/pull/11780
+Bug-Debian: https://bugs.debian.org/1030335
+Bug-Upstream: https://github.com/pypa/pip/issues/11776
+---
+ src/pip/_internal/cli/cmdoptions.py     | 8 ++++++++
+ src/pip/_internal/commands/install.py   | 6 +++++-
+ src/pip/_internal/commands/uninstall.py | 4 +++-
+ src/pip/_internal/exceptions.py         | 4 +++-
+ 4 files changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/src/pip/_internal/cli/cmdoptions.py b/src/pip/_internal/cli/cmdoptions.py
+index 301f24f..7b510b1 100644
+--- a/src/pip/_internal/cli/cmdoptions.py
++++ b/src/pip/_internal/cli/cmdoptions.py
+@@ -164,6 +164,14 @@ require_virtualenv: Callable[..., Option] = partial(
+     ),
+ )
+ 
++override_externally_managed: Callable[..., Option] = partial(
++    Option,
++    "--break-system-packages",
++    dest="override_externally_managed",
++    action="store_true",
++    help="Allow pip to modify an EXTERNALLY-MANAGED Python installation",
++)
++
+ python: Callable[..., Option] = partial(
+     Option,
+     "--python",
+diff --git a/src/pip/_internal/commands/install.py b/src/pip/_internal/commands/install.py
+index cecaac2..b20aedd 100644
+--- a/src/pip/_internal/commands/install.py
++++ b/src/pip/_internal/commands/install.py
+@@ -215,6 +215,7 @@ class InstallCommand(RequirementCommand):
+         self.cmd_opts.add_option(cmdoptions.use_pep517())
+         self.cmd_opts.add_option(cmdoptions.no_use_pep517())
+         self.cmd_opts.add_option(cmdoptions.check_build_deps())
++        self.cmd_opts.add_option(cmdoptions.override_externally_managed())
+ 
+         self.cmd_opts.add_option(cmdoptions.config_settings())
+         self.cmd_opts.add_option(cmdoptions.install_options())
+@@ -296,7 +297,10 @@ class InstallCommand(RequirementCommand):
+             and options.target_dir is None
+             and options.prefix_path is None
+         )
+-        if installing_into_current_environment:
++        if (
++            installing_into_current_environment
++            and not options.override_externally_managed
++        ):
+             check_externally_managed()
+ 
+         upgrade_strategy = "to-satisfy-only"
+diff --git a/src/pip/_internal/commands/uninstall.py b/src/pip/_internal/commands/uninstall.py
+index e5a4c8e..f198fc3 100644
+--- a/src/pip/_internal/commands/uninstall.py
++++ b/src/pip/_internal/commands/uninstall.py
+@@ -58,6 +58,7 @@ class UninstallCommand(Command, SessionCommandMixin):
+             help="Don't ask for confirmation of uninstall deletions.",
+         )
+         self.cmd_opts.add_option(cmdoptions.root_user_action())
++        self.cmd_opts.add_option(cmdoptions.override_externally_managed())
+         self.parser.insert_option_group(0, self.cmd_opts)
+ 
+     def run(self, options: Values, args: List[str]) -> int:
+@@ -93,7 +94,8 @@ class UninstallCommand(Command, SessionCommandMixin):
+                 f'"pip help {self.name}")'
+             )
+ 
+-        check_externally_managed()
++        if not options.override_externally_managed:
++            check_externally_managed()
+ 
+         protect_pip_from_modification_on_windows(
+             modifying_pip="pip" in reqs_to_uninstall
+diff --git a/src/pip/_internal/exceptions.py b/src/pip/_internal/exceptions.py
+index d28713f..d452729 100644
+--- a/src/pip/_internal/exceptions.py
++++ b/src/pip/_internal/exceptions.py
+@@ -696,7 +696,9 @@ class ExternallyManagedEnvironment(DiagnosticPipError):
+             context=context,
+             note_stmt=(
+                 "If you believe this is a mistake, please contact your "
+-                "Python installation or OS distribution provider."
++                "Python installation or OS distribution provider. "
++                "You can override this, at the risk of breaking your Python "
++                "installation or OS, by passing --break-system-packages."
+             ),
+             hint_stmt=Text("See PEP 668 for the detailed specification."),
+         )

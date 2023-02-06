@@ -4,7 +4,6 @@ set -eux
 
 export HOME=$AUTOPKGTEST_TMP
 export PATH=$PATH:$HOME/.local/bin
-export PIP_DISABLE_PIP_VERSION_CHECK=1
 
 if [ $(id -u) = 0 ]
 then
@@ -17,14 +16,13 @@ else
     runuser=""
 fi
 
-$runuser python3 -m pip install world
+$runuser python3 -m pip install --break-system-packages world
 $runuser python3 -m pip list --format=columns
 $runuser python3 -m pip show world
 ls -ld $HOME/.local/lib/python3.*/site-packages/world-*.dist-info
-$runuser python3 -m pip uninstall -y world
+$runuser python3 -m pip uninstall --break-system-packages -y world
 $runuser python3 -m pip list --format=columns
-# Temporarily disabled.  See #912379
-#$runuser python3 -m pip list --outdated
+$runuser python3 -m pip list --outdated
 if [ $(id -u) = 0 ]
 then
     deluser --quiet testing
