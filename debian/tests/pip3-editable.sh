@@ -3,7 +3,6 @@
 set -eu
 
 export HOME=$AUTOPKGTEST_TMP
-export PIP_DISABLE_PIP_VERSION_CHECK=1
 
 cd $HOME
 mkdir stupid
@@ -20,4 +19,4 @@ setup(
 EOF
 
 cd stupid
-python3 -m pip install -e .[testing]
+python3 -m pip install --break-system-packages -e .[testing]

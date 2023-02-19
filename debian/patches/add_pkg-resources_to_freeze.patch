@@ -14,15 +14,15 @@ Last-Update: 2020-04-04
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/pip/_internal/commands/freeze.py b/src/pip/_internal/commands/freeze.py
-index 4d1ce69..5f71bd3 100644
+index 5fa6d39..6e9cc76 100644
 --- a/src/pip/_internal/commands/freeze.py
 +++ b/src/pip/_internal/commands/freeze.py
-@@ -12,7 +12,7 @@ from pip._internal.utils.compat import stdlib_pkgs
- from pip._internal.utils.deprecation import deprecated
- from pip._internal.utils.typing import MYPY_CHECK_RUNNING
+@@ -8,7 +8,7 @@ from pip._internal.cli.status_codes import SUCCESS
+ from pip._internal.operations.freeze import freeze
+ from pip._internal.utils.compat import stdlib_pkgs
  
--DEV_PKGS = {'pip', 'setuptools', 'distribute', 'wheel'}
-+DEV_PKGS = {'pip', 'setuptools', 'distribute', 'wheel', 'pkg-resources'}
+-DEV_PKGS = {"pip", "setuptools", "distribute", "wheel"}
++DEV_PKGS = {"pip", "setuptools", "distribute", "wheel", "pkg-resources"}
  
- if MYPY_CHECK_RUNNING:
-     from optparse import Values
+ 
+ class FreezeCommand(Command):
