@@ -1,3 +1,142 @@
+python-pip (23.0.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream bug-fix release.
+  * Update NEWS to reflect the true PEP-668 rollout in cpython3.
+  * Drop patches superseded upstream: break-system-packages, and
+    default-sysconfig-scheme.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 19 Feb 2023 10:19:33 -0400
+
+python-pip (23.0+dfsg-2) unstable; urgency=medium
+
+  * Patch: Implement ``--break-system-packages`` to permit installing packages
+    into EXTERNALLY-MANAGED Python installations. (Closes: #1030335)
+  * Use --break-system-packages in our autopkgtests.
+  * Bump the NEWS entry, to document --break-system-packages.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 05 Feb 2023 18:07:04 -0400
+
+python-pip (23.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Supports PEP-668. Add a NEWS file explaining the implications of this.
+  * Refresh patches.
+  * Replace default-sysconfig-scheme.patch with the new upstream proposed
+    solution.
+  * Explicitly Depend on python3-pip in autopkgtests for it.
+  * Remove EXTERNALLY-MANAGED markers in existing autopkgtests, to test
+    system-wide installation.
+  * Add new autopkgtests that run in a venv.
+  * Bump copyright.
+  * Bump Standards-Version to 4.6.2, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 02 Feb 2023 09:32:03 -0400
+
+python-pip (22.3.1+dfsg-2) unstable; urgency=medium
+
+  * Patch: Use the default sysconfig scheme, in isolated environments.
+    (Closes: #1019293)
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 20 Jan 2023 15:26:49 -0400
+
+python-pip (22.3.1+dfsg-1) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * New upstream release.
+
+  [ Scott Kitterman ]
+  * Remove deleted --build option from pip man page (Closes: #1020556)
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 14 Dec 2022 20:11:14 -0400
+
+python-pip (22.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Drop unnecessary Build-Depends on python3-wheel.
+  * Use execute_{before,after} instead of overrides, where possible, in
+    debian/rules.
+  * Support the nodoc build profile.
+  * Update copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 17 Oct 2022 21:44:22 +0200
+
+python-pip (22.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Update copyright.
+  * Bump Standards-Version to 0.6.1, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 22 Jul 2022 15:48:44 +0200
+
+python-pip (22.1.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 26 May 2022 17:09:17 +0200
+
+python-pip (22.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update copyright.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 16 May 2022 18:29:51 -0400
+
+python-pip (22.0.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Update copyright.
+  * Unset PIP_NO_VENDOR_FOR_DOWNSTREAM, no longer needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 02 Feb 2022 12:00:40 -0400
+
+python-pip (21.3.1+dfsg-3) unstable; urgency=medium
+
+  * Source-only upload.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 12 Jan 2022 19:38:23 -0400
+
+python-pip (21.3.1+dfsg-2) unstable; urgency=medium
+
+  * Migrate from a single python-pip-whl package to: python3-pip-whl,
+    python3-setuptools-whl, python3-wheel-whl, built from their respective
+    source packages. (Closes: #1003573)
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 12 Jan 2022 13:29:13 -0400
+
+python-pip (21.3.1+dfsg-1) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * New upstream release.
+    - Drops Python 2.7 support.
+  * Refresh patches.
+  * Drop patch debian-python2.7-sysconfig-workaround.patch, no longer needed.
+  * Drop patches git-split-ascii, set_user_default, str-version, superseded
+    upstream. (Closes: #995959)
+  * Add myself to the copyright file.
+  * Bump watch file version to 4.
+  * Bump Standards-Version to 3.6.0, no changes needed.
+  * Stop de-vendoring dependencies, on balance this has caused more trouble
+    than it has saved.
+    - Drop patches debundle, handle-unbundled-requests,
+      wheel-and-pip-not-pip-wheels, debug-command-for-unbundled, no longer
+      needed.
+    - Patch: certifi-debian-ca-certificates, copied over from certifi source.
+    - Document vendored modules copyright.
+  * Re-enable "pip list --outdated" in autopkgtest.
+  * Allow stderr in pip3-editable.sh autopkgtest, for pip's new warning about
+    running as root.
+  * Exclude distlib Windows .exe locators from the source package.
+    - Drop lintian override for these.
+  * Bump debhelper compat level to 13.
+  * Build with pybuild's pyproject plugin.
+  * Drop Python 2 wheels, these may be provided by a separate source package.
+    (Closes: #938027, #999501, 1000826)
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 06 Jan 2022 22:06:12 -0400
+
 python-pip (20.3.4-4) unstable; urgency=medium
 
   * No-change upload against distlib 0.3.2+really+0.3.1-0.1.

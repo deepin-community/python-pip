@@ -125,11 +125,6 @@ INSTALL OPTIONS
     Install from the given requirements file.  This option can be used multiple
     times.
 
--b, --build <dir>
-    Directory to unpack packages into and build in.  The default in a
-    virtualenv is "<venv path>/build".  The default for global installs is
-    "<OS temp dir>/pip_build_<username>".
-
 -t, --target <dir>
     Install packages into <dir>.
 
