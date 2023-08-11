@@ -24,6 +24,3 @@ ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
 	mkdir -p debian/tmp
 	rst2man debian/pip-manpage.rst > debian/tmp/pip3.man
 endif
-
-execute_after_dh_clean:
-	rm -rf debian/tmp
