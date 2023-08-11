@@ -20,10 +20,10 @@ Last-Update: 2014-12-04
  1 file changed, 29 insertions(+), 5 deletions(-)
 
 diff --git a/src/pip/_internal/utils/misc.py b/src/pip/_internal/utils/misc.py
-index baa1ba7..cdf9b3a 100644
+index bfed827..650049d 100644
 --- a/src/pip/_internal/utils/misc.py
 +++ b/src/pip/_internal/utils/misc.py
-@@ -321,16 +321,40 @@ def renames(old: str, new: str) -> None:
+@@ -322,16 +322,40 @@ def renames(old: str, new: str) -> None:
  
  def is_local(path: str) -> bool:
      """

@@ -3,6 +3,7 @@ LICENSE.txt
 MANIFEST.in
 NEWS.rst
 README.rst
+SECURITY.md
 pyproject.toml
 setup.cfg
 setup.py
@@ -204,7 +205,6 @@ src/pip/_internal/operations/build/wheel_editable.py
 src/pip/_internal/operations/build/wheel_legacy.py
 src/pip/_internal/operations/install/__init__.py
 src/pip/_internal/operations/install/editable_legacy.py
-src/pip/_internal/operations/install/legacy.py
 src/pip/_internal/operations/install/wheel.py
 src/pip/_internal/req/__init__.py
 src/pip/_internal/req/constructors.py
@@ -226,6 +226,7 @@ src/pip/_internal/resolution/resolvelib/reporter.py
 src/pip/_internal/resolution/resolvelib/requirements.py
 src/pip/_internal/resolution/resolvelib/resolver.py
 src/pip/_internal/utils/__init__.py
+src/pip/_internal/utils/_jaraco_text.py
 src/pip/_internal/utils/_log.py
 src/pip/_internal/utils/appdirs.py
 src/pip/_internal/utils/compat.py
@@ -233,7 +234,6 @@ src/pip/_internal/utils/compatibility_tags.py
 src/pip/_internal/utils/datetime.py
 src/pip/_internal/utils/deprecation.py
 src/pip/_internal/utils/direct_url_helpers.py
-src/pip/_internal/utils/distutils_args.py
 src/pip/_internal/utils/egg_link.py
 src/pip/_internal/utils/encoding.py
 src/pip/_internal/utils/entrypoints.py
@@ -407,7 +407,6 @@ src/pip/_vendor/packaging/utils.py
 src/pip/_vendor/packaging/version.py
 src/pip/_vendor/pkg_resources/LICENSE
 src/pip/_vendor/pkg_resources/__init__.py
-src/pip/_vendor/pkg_resources/py31compat.py
 src/pip/_vendor/platformdirs/LICENSE
 src/pip/_vendor/platformdirs/__init__.py
 src/pip/_vendor/platformdirs/__main__.py
@@ -509,6 +508,7 @@ src/pip/_vendor/rich/_emoji_codes.py
 src/pip/_vendor/rich/_emoji_replace.py
 src/pip/_vendor/rich/_export_format.py
 src/pip/_vendor/rich/_extension.py
+src/pip/_vendor/rich/_fileno.py
 src/pip/_vendor/rich/_inspect.py
 src/pip/_vendor/rich/_log_render.py
 src/pip/_vendor/rich/_loop.py
