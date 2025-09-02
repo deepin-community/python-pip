@@ -8,10 +8,10 @@ Patch-Name: disable-pip-version-check.patch
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/pip/_internal/cli/cmdoptions.py b/src/pip/_internal/cli/cmdoptions.py
-index 02ba608..5de7ffa 100644
+index 3519dad..f7964e6 100644
 --- a/src/pip/_internal/cli/cmdoptions.py
 +++ b/src/pip/_internal/cli/cmdoptions.py
-@@ -892,7 +892,7 @@ disable_pip_version_check: Callable[..., Option] = partial(
+@@ -955,7 +955,7 @@ disable_pip_version_check: Callable[..., Option] = partial(
      "--disable-pip-version-check",
      dest="disable_pip_version_check",
      action="store_true",

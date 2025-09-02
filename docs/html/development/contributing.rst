@@ -35,6 +35,15 @@ Examples include re-flowing text in comments or documentation, or adding or
 removing blank lines or whitespace within lines. Such changes can be made
 separately, as a "formatting cleanup" PR, if needed.
 
+.. attention::
+
+   While contributors may use whatever tools they like when developing a pull
+   request, it is the contributor's responsibility to ensure that submitted
+   code meets the project requirements, and that they understand the submitted
+   code well enough to respond to review comments.
+
+   In particular, we will mark LLM-generated slop as spam without additional
+   discussion.
 
 Automated Testing
 =================
@@ -112,7 +121,7 @@ the ``news/`` directory with the extension of ``.trivial.rst``. If you are on a
 POSIX like operating system, one can be added by running
 ``touch news/$(uuidgen).trivial.rst``. On Windows, the same result can be
 achieved in Powershell using ``New-Item "news/$([guid]::NewGuid()).trivial.rst"``.
-Core committers may also add a "trivial" label to the PR which will accomplish
+Core committers may also add a "skip news" label to the PR which will accomplish
 the same thing.
 
 Upgrading, removing, or adding a new vendored library gets a special mention

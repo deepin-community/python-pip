@@ -1,3 +1,115 @@
+python-pip (25.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Update copyright for vendored libraries.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 10 Aug 2025 08:51:00 +0200
+
+python-pip (25.1.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream point release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 02 May 2025 12:51:29 -0400
+
+python-pip (25.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Update copyright for vendored libraries.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 26 Apr 2025 09:06:19 -0400
+
+python-pip (25.0.1+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * Add manual page symlinks for pip-* (closes: #1067158).
+  * New upstream release.
+
+ -- Colin Watson <cjwatson@debian.org>  Tue, 25 Mar 2025 22:48:14 +0000
+
+python-pip (25.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Update copyright.
+  * Bump Standards-Version to 4.7.0, no changes needed.
+  * Add upstream metadata.
+  * Build-Depend on python3-sphinx-issues.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 26 Jan 2025 12:41:40 -0400
+
+python-pip (24.3.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream minor release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 01 Nov 2024 10:32:03 -0700
+
+python-pip (24.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream minor release.
+  * Update copyright.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 08 Aug 2024 19:45:42 +0900
+
+python-pip (24.1.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream point release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 29 Jun 2024 11:24:17 -0700
+
+python-pip (24.1+dfsg-1) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * New upstream minor release.
+  * Refresh patches.
+  * Update copyright.
+
+  [ Scott Kitterman ]
+  * Remove myself from uploaders
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 24 Jun 2024 18:13:31 -0700
+
+python-pip (24.0+dfsg-2) unstable; urgency=medium
+
+  * Drop Depends on python3-distutils and python3-setuptools, no longer
+    necessary when doing isolated builds.
+  * Build manpages from pip's Sphinx documentation. This builds a fleet of
+    manpages, instead of one, but it's at least up to date. (Closes: #1061184)
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 05 Mar 2024 23:29:00 -0400
+
+python-pip (24.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop hands-off-system-packages.patch, now that PEP-668 is deployed.
+  * Refresh patches.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 04 Feb 2024 21:41:01 -0400
+
+python-pip (23.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add truststore to debian/copyright.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 19 Oct 2023 12:59:28 +0200
+
+python-pip (23.2.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream point-release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 22 Sep 2023 22:30:36 +0530
+
+python-pip (23.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Update copyright.
+  * Mark venv-editable.sh autopgktest as needs-internet.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 20 Jul 2023 10:41:09 +0200
+
 python-pip (23.1.2+dfsg-2) unstable; urgency=medium
 
   * Upload to unstable.
