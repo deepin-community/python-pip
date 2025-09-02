@@ -7,80 +7,65 @@ Copyright: (c) 2008-present, The pip developers (see AUTHORS.txt file)
 License: Expat
 
 Files: src/pip/_vendor/cachecontrol/*
-       src/pip/_vendor/distro.py
+       src/pip/_vendor/distro/*
        src/pip/_vendor/msgpack/*
        src/pip/_vendor/requests/*
-       src/pip/_vendor/tenacity/*
 Copyright: 2015-2021, Eric Larson
            2008-2011, INADA Naoki <songofacandy@gmail.com>
-           2016,      Joshua Harlow
-           2013-2016, Julien Danjou <julien@danjou.info>
            2019-2022, Kenneth Reitz
-           2015-2017, Nir Cohen
-           2013-2014, Ray Holder
+           2015-2021, Nir Cohen
 License: Apache-2.0
 
 Files: src/pip/_vendor/certifi/*
 Copyright: Kenneth Reitz me@kennethreitz.com
 License: MPL-2
 
-Files: src/pip/_vendor/chardet/*
-Copyright: 2012-2013, Ian Cordasco
-           1998-2005, Netscape Communications Corporation
-           2006-2008, Mark Pilgrim
-           2003,      Mozilla Foundation
-License: LGPL-2.1+
-
-Files: src/pip/_vendor/colorama/*
-       src/pip/_vendor/idna/*
-       src/pip/_vendor/webencodings/*
-Copyright: 2010-2020, Jonathan Hartley <tartley@tartley.com> and
-                      Arnon Yaari
-           2013-2021, Kim Davies
-           2012,      Simon Sapin
+Files: src/pip/_vendor/idna/*
+Copyright: 2013-2024, Kim Davies and contributors
 License: BSD-3
 
 Files: src/pip/_vendor/distlib/*
-       src/pip/_vendor/typing_extensions.py
-Copyright: 2012-2022, The Python Software Foundation
-           2012-2022, Vinay Sajip
+Copyright: 2012-2023, The Python Software Foundation
+           2012-2024, Vinay Sajip
 License: Python
-
-Files: src/pip/_vendor/pkg_resources/*
-       src/pip/_vendor/platformdirs/*
-       src/pip/_vendor/pyparsing/*
-       src/pip/_vendor/rich/*
-       src/pip/_vendor/six.py
-       src/pip/_vendor/tomli/*
-       src/pip/_vendor/urllib3/*
-Copyright: 2010-202x, The platformdirs developers
-           2008-2020, Andrey Petrov and contributors
-           2010-2020, Benjamin Peterson
-           2016,      Jason R Coombs <jaraco@jaraco.com>
-           2003-2022, Paul T. McGuire
-                      Sindre Sorhus <sindresorhus@gmail.com>
-           2021,      Taneli Hukkinen
-           2017,      Thomas Kluyver
-           2020,      Will McGugan
-License: Expat
 
 Files: src/pip/_vendor/packaging/*
 Copyright: Donald Stufft and individual contributors.
 License: Apache-2.0 OR BSD-2
+
+Files: src/pip/_vendor/dependency_groups/*
+       src/pip/_vendor/packaging/licenses/*
+       src/pip/_vendor/pkg_resources/*
+       src/pip/_vendor/platformdirs/*
+       src/pip/_vendor/pyproject_hooks/*
+       src/pip/_vendor/rich/*
+       src/pip/_vendor/tomli/*
+       src/pip/_vendor/truststore/*
+       src/pip/_vendor/urllib3/*
+Copyright: 2010-202x,    The platformdirs developers
+           2008-2020,    Andrey Petrov and contributors
+           2010-2020,    Benjamin Peterson
+           2024-present, Stephen Rosen <sirosen0@gmail.com>
+                         Sindre Sorhus <sindresorhus@gmail.com>
+           2021,         Taneli Hukkinen
+           2017,         Thomas Kluyver
+           2020,         Will McGugan
+           2017-present, Ofek Lev <oss@ofek.dev>
+License: Expat
 
 Files: src/pip/_vendor/resolvelib/*
 Copyright: 2018, Tzu-ping Chung <uranusjr@gmail.com>
 License: ISC
 
 Files: src/pip/_vendor/pygments/*
-Copyright: 2006-2022, the Pygments team
+Copyright: 2006-2024, the Pygments team
            2006-2022, Georg Brandl, Matthäus Chajdas and contributors
 License: BSD-2
 
 Files: debian/*
 Copyright: 2009,      Jeff Licquia <licquia@debian.org>
            2020,      Scott Kitterman <scott@kitterman.com>
-           2013-2023, Stefano Rivera <stefanor@debian.org>
+           2013-2025, Stefano Rivera <stefanor@debian.org>
 License: Expat
 
 License: Apache-2.0
@@ -178,15 +163,6 @@ License: ISC
  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-License: LGPL-2.1+
- This library is free software; you can redistribute it and/or modify
- it under the terms of the GNU Lesser General Public License as
- published by the Free Software Foundation; either version 2.1 of the
- License, or (at your option) any later version.
- .
- On Debian systems, the license is available at
- /usr/share/common-licenses/LGPL-2.1
 
 License: MPL-2
  This Source Code Form is subject to the terms of the Mozilla Public License,

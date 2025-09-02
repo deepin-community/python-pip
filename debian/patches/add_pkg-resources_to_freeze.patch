@@ -10,19 +10,18 @@ Last-Update: 2020-04-04
   * Add pkg-resources to pip freeze 'DEV_PKGS' so this Debian unique system
     wheel does not show up when pip freeze is run (Closes: #871790)
 ---
- src/pip/_internal/commands/freeze.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ src/pip/_internal/commands/freeze.py | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/src/pip/_internal/commands/freeze.py b/src/pip/_internal/commands/freeze.py
-index 5fa6d39..6e9cc76 100644
+index 7794857..8c5cdb1 100644
 --- a/src/pip/_internal/commands/freeze.py
 +++ b/src/pip/_internal/commands/freeze.py
-@@ -8,7 +8,7 @@ from pip._internal.cli.status_codes import SUCCESS
- from pip._internal.operations.freeze import freeze
- from pip._internal.utils.compat import stdlib_pkgs
+@@ -17,6 +17,7 @@ def _dev_pkgs() -> set[str]:
  
--DEV_PKGS = {"pip", "setuptools", "distribute", "wheel"}
-+DEV_PKGS = {"pip", "setuptools", "distribute", "wheel", "pkg-resources"}
+     if _should_suppress_build_backends():
+         pkgs |= {"setuptools", "distribute", "wheel"}
++        pkgs |= {"setuptools", "distribute", "wheel", "pkg-resources"}
  
+     return pkgs
  
- class FreezeCommand(Command):

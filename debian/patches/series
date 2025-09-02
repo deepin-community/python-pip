@@ -1,5 +1,7 @@
-hands-off-system-packages.patch
 disable-pip-version-check.patch
 commands_list_version_workaround.patch
 add_pkg-resources_to_freeze.patch
 certifi-debian-ca-certificates.patch
+no-sphinxcontrib.towncrier.patch
+intersphinx.patch
+pip3-manpages.patch

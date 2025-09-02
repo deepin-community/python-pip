@@ -1,6 +1,8 @@
 From: =?utf-8?q?S=C3=A9bastien_Delafond?= <sdelafond@gmail.com>
 Date: Wed, 11 Dec 2019 13:51:16 -0300
-Subject: Use Debian provided /etc/ssl/certs/ca-certificates.cr
+Subject: certifi: Use Debian provided /etc/ssl/certs/ca-certificates.crt
+
+Needed until truststore becomes default.
 
 Origin: https://salsa.debian.org/debian/python-certifi/-/blob/debian/master/debian/patches/0001-Use-Debian-provided-etc-ssl-certs-ca-certificates.cr.patch
 Forwarded: not-necessary
@@ -9,18 +11,18 @@ Forwarded: not-necessary
  1 file changed, 11 insertions(+)
 
 diff --git a/src/pip/_vendor/certifi/core.py b/src/pip/_vendor/certifi/core.py
-index c3e5466..5c67600 100644
+index 2f2f7e0..03e3791 100644
 --- a/src/pip/_vendor/certifi/core.py
 +++ b/src/pip/_vendor/certifi/core.py
-@@ -6,6 +6,7 @@ This module returns the installation location of cacert.pem or its contents.
- """
- import sys
+@@ -10,6 +10,7 @@ import atexit
+ def exit_cacert_ctx() -> None:
+     _CACERT_CTX.__exit__(None, None, None)  # type: ignore[union-attr]
  
 +DEBIAN_CA_CERTS_PATH = '/etc/ssl/certs/ca-certificates.crt'
  
  if sys.version_info >= (3, 11):
  
-@@ -106,3 +107,13 @@ else:
+@@ -81,3 +82,13 @@ else:
  
      def contents() -> str:
          return read_text("pip._vendor.certifi", "cacert.pem", encoding="ascii")
