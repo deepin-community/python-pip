@@ -3,5 +3,8 @@ commands_list_version_workaround.patch
 add_pkg-resources_to_freeze.patch
 certifi-debian-ca-certificates.patch
 no-sphinxcontrib.towncrier.patch
+fix-sphinx-inline-tabs.patch
 intersphinx.patch
 pip3-manpages.patch
+CVE-2025-8869-symlink-security.patch
+CVE-2026-1703-commonpath.patch
