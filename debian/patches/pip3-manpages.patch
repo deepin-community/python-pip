@@ -26,10 +26,10 @@ Forwarded: not-needed
  17 files changed, 59 insertions(+), 59 deletions(-)
 
 diff --git a/docs/html/conf.py b/docs/html/conf.py
-index 429a55d..476b212 100644
+index 03df87e..d736e29 100644
 --- a/docs/html/conf.py
 +++ b/docs/html/conf.py
-@@ -121,11 +121,11 @@ def determine_man_pages() -> list[tuple[str, str, str, str, int]]:
+@@ -122,11 +122,11 @@ def determine_man_pages() -> List[Tuple[str, str, str, str, int]]:
          )
  
      retval = [
