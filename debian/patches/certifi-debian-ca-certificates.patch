@@ -11,7 +11,7 @@ Forwarded: not-necessary
  1 file changed, 11 insertions(+)
 
 diff --git a/src/pip/_vendor/certifi/core.py b/src/pip/_vendor/certifi/core.py
-index 2f2f7e0..03e3791 100644
+index 70e0c3b..7a15ab9 100644
 --- a/src/pip/_vendor/certifi/core.py
 +++ b/src/pip/_vendor/certifi/core.py
 @@ -10,6 +10,7 @@ import atexit
@@ -22,7 +22,7 @@ index 2f2f7e0..03e3791 100644
  
  if sys.version_info >= (3, 11):
  
-@@ -81,3 +82,13 @@ else:
+@@ -112,3 +113,13 @@ else:
  
      def contents() -> str:
          return read_text("pip._vendor.certifi", "cacert.pem", encoding="ascii")

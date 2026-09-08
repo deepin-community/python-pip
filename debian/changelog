@@ -1,11 +1,3 @@
-python-pip (25.2+dfsg-1) unstable; urgency=medium
-
-  * New upstream release.
-  * Refresh patches.
-  * Update copyright for vendored libraries.
-
- -- Stefano Rivera <stefanor@debian.org>  Sun, 10 Aug 2025 08:51:00 +0200
-
 python-pip (25.1.1+dfsg-1) unstable; urgency=medium
 
   * New upstream point release.

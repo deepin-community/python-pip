@@ -1,3 +1,5 @@
+include AUTHORS.txt
+include LICENSE.txt
 include NEWS.rst
 include README.rst
 include SECURITY.md
@@ -10,6 +12,8 @@ include build-project/.python-version
 
 include src/pip/_vendor/README.rst
 include src/pip/_vendor/vendor.txt
+recursive-include  src/pip/_vendor *LICENSE*
+recursive-include  src/pip/_vendor *COPYING*
 
 include docs/requirements.txt
 

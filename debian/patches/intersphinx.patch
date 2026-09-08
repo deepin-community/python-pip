@@ -10,10 +10,10 @@ Forwarded: not-needed
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/docs/html/conf.py b/docs/html/conf.py
-index ec6cef1..429a55d 100644
+index 4154d38..03df87e 100644
 --- a/docs/html/conf.py
 +++ b/docs/html/conf.py
-@@ -74,8 +74,10 @@ smartquotes_action = "qe"
+@@ -75,8 +75,10 @@ smartquotes_action = "qe"
  
  # -- Options for intersphinx ----------------------------------------------------------
  

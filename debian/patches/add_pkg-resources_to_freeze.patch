@@ -14,10 +14,10 @@ Last-Update: 2020-04-04
  1 file changed, 1 insertion(+)
 
 diff --git a/src/pip/_internal/commands/freeze.py b/src/pip/_internal/commands/freeze.py
-index 7794857..8c5cdb1 100644
+index f8de335..8eb1cd0 100644
 --- a/src/pip/_internal/commands/freeze.py
 +++ b/src/pip/_internal/commands/freeze.py
-@@ -17,6 +17,7 @@ def _dev_pkgs() -> set[str]:
+@@ -18,6 +18,7 @@ def _dev_pkgs() -> AbstractSet[str]:
  
      if _should_suppress_build_backends():
          pkgs |= {"setuptools", "distribute", "wheel"}

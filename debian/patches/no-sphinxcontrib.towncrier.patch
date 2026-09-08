@@ -14,10 +14,10 @@ Forwarded: not-needed
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/docs/html/conf.py b/docs/html/conf.py
-index e679c1b..ec6cef1 100644
+index 0a5cdbc..4154d38 100644
 --- a/docs/html/conf.py
 +++ b/docs/html/conf.py
-@@ -31,7 +31,7 @@ if "man" not in tags:  # type: ignore[name-defined] # noqa: F821
+@@ -32,7 +32,7 @@ if "man" not in tags:  # type: ignore[name-defined] # noqa: F821
              "myst_parser",
              "sphinx_copybutton",
              "sphinx_inline_tabs",
